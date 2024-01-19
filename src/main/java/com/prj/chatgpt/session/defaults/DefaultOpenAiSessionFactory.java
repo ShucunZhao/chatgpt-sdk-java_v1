@@ -40,6 +40,8 @@ public class DefaultOpenAiSessionFactory implements OpenAiSessionFactory {
                 .readTimeout(450, TimeUnit.SECONDS)
                 //.proxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 21284)))
                 .build();
+        //Add the http client and openai session information at the same time:
+        configuration.setOkHttpClient(okHttpClient);
 
         // 3. Create API service
         IOpenAiApi openAiApi = new Retrofit.Builder()
@@ -48,6 +50,9 @@ public class DefaultOpenAiSessionFactory implements OpenAiSessionFactory {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build().create(IOpenAiApi.class);
+        //Add the http client and openai session information at the same time:
+        configuration.setOpenAiApi(openAiApi);
 
-        return new DefaultOpenAiSession(openAiApi);    }
+        //Return http client and openai session information at the same time by configuration
+        return new DefaultOpenAiSession(configuration);    }
 }
