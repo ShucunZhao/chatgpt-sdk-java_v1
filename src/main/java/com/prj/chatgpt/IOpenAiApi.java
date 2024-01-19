@@ -14,19 +14,22 @@ import retrofit2.http.POST;
  */
 public interface IOpenAiApi {
 
+    String v1_completions = "v1/completions";
+
     /**
      * Text Q&A
      * @param qaCompletionRequest request information
      * @return                    response result
      */
-    @POST("v1/completions")
+    @POST(v1_completions)
     Single<QACompletionResponse> completions(@Body QACompletionRequest qaCompletionRequest);
 
+    String v1_chat_completions = "v1/chat/completions";
     /**
      * Default GPT-3.5 Q&A model
      * @param chatCompletionRequest request information
      * @return                      response result
      */
-    @POST("v1/chat/completions")
+    @POST(v1_chat_completions)
     Single<ChatCompletionResponse> completions(@Body ChatCompletionRequest chatCompletionRequest);
 }
