@@ -45,12 +45,12 @@ public class HttpClientTest {
                      * Get the token parameter from the request and add it to the request path
                      */
                     HttpUrl url = original.url().newBuilder()
-                            .addQueryParameter("token", "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")
+                            .addQueryParameter("token", "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")
                             .build();
 
                     Request request = original.newBuilder()
                             .url(url)
-                            .header(Header.AUTHORIZATION.getValue(), "Bearer " + "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")
+                            .header(Header.AUTHORIZATION.getValue(), "Bearer " + "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")
                             .header(Header.CONTENT_TYPE.getValue(), ContentType.JSON.getValue())
                             .method(original.method(), original.body())
                             .build();
@@ -92,12 +92,12 @@ public class HttpClientTest {
                 .addInterceptor(chain -> {
                     Request original = chain.request();
                     HttpUrl url = original.url().newBuilder() // Get the token parameter from the request and add it to the request path
-                            .addQueryParameter("token", "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")
+                            .addQueryParameter("token", "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")
                             .build();
 
                     Request request = original.newBuilder()
                             .url(url)
-                            .header(Header.AUTHORIZATION.getValue(), "Bearer " + "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")
+                            .header(Header.AUTHORIZATION.getValue(), "Bearer " + "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")
                             .header(Header.CONTENT_TYPE.getValue(), ContentType.JSON.getValue())
                             .method(original.method(), original.body())
                             .build();
